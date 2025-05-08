@@ -1,5 +1,5 @@
 <div style="text-align: center;">
-    <img src="./assets/imgs/logoWhite.webp" alt="" />
+    <img src="./assets/imgs/logoWhite.webp" alt="" style="height: 23px" />
 </div>
 
 # U Fest app (PVT)
