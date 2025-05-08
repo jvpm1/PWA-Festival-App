@@ -1,5 +1,10 @@
+<div style="text-align: center;">
+    <img src="./assets/imgs/logoWhite.webp" alt="" />
+</div>
+
 # U Fest app (PVT)
 PWA app voor de U festival
 
-## Markdowns
-1. [De vraagen](./markdowns/de-vragen.md)
+## Files
+- [De vraagen](./markdowns/de-vragen.md)
+- [PWA directory](./src)
