@@ -8,9 +8,7 @@ PWA app voor de U festival
 ----
 
 ## Bestanden
-
-> [!note] Over de PWA
-> ...
-
-### [De vraagen](./markdowns/de-vragen.md)
-### [PWA map](./src)
+- [De vraagen](./markdowns/de-vragen.md)
+- [PWA map](./src)
+    - [Server (Deno)](./src/server)
+    - [Client (SolidJS)](./src/client)
