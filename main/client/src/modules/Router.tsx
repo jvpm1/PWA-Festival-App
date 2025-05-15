@@ -1,11 +1,11 @@
 // Router.tsx
 import { createSignal, Component } from "solid-js";
 
-export type Route = "home" | "map" | "info";
+export type Route = "home" | "map" | "info" | "events";
 
 export type RouteComponent = Component<{}>;
 
-const [activeRoute, setRoute] = createSignal<Route>("home");
+const [activeRoute, setRoute] = createSignal<Route>("info");
 
 interface RouterProps {
   routeMap: Record<
