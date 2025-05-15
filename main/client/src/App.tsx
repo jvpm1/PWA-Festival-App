@@ -58,7 +58,7 @@ const App: Component = () => {
       </main>
 
       <header class="fixed bottom-0 p-4 w-full z-10">
-        <nav class="w-full h-17 flex justify-between items-center bg-white/80 dark:bg-black/80 backdrop-blur-xl rounded-full">
+        <nav class="w-full h-17 flex justify-between items-center bg-white/80 dark:bg-black/50 backdrop-blur-lg rounded-full border border-neutral-200 dark:border-neutral-900">
           <For each={Object.entries(routeMap)}>
             {([route, { name, icon }]) => {
               const isActive = () => currentRoute() === route;
