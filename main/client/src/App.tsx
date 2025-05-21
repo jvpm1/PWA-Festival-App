@@ -46,13 +46,13 @@ const App: Component = () => {
   const [currentRoute, setCurrentRoute] = createSignal<Route>("home");
 
   const handleRouteChange = (route: Route) => {
-    document.body.requestFullscreen(); // TODO: Remove upon public release
+    // document.body.requestFullscreen(); // TODO: Remove upon public release
     setRoute(route);
     setCurrentRoute(route);
   };
 
   return (
-    <div class="bg-neutral-50 dark:bg-black flex flex-col w-screen h-screen">
+    <div class="bg-root-bg dark:bg-root-bg-dark flex flex-col w-screen h-screen">
       <main class="h-full w-full overflow-y-auto">
         <RouterComponent routeMap={routeMap} />
       </main>

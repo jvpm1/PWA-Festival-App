@@ -2,8 +2,39 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+  --color-root-bg: rgb(255, 255, 255);
+  --color-root-bg-dark: #000;
+
+  /* Background */
+  --color-primary-container-bg: oklch(98% 0 0);
+  --color-primary-container-bg-dark: #000;
+
+  /* Text */
+  --color-primary-text: oklch(28% 0 0);
+  --color-secondary-text: oklch(36% 0 0);
+
+  --color-primary-text-dark: oklch(87% 0 0);
+  --color-secondary-text-dark: oklch(80% 0 0);
+
+  /* Border */
+  --color-primary-border: oklch(90% 0 0);
+  --color-primary-border-dark: oklch(32% 0 0);
+
+  /* Misc */
+  --color-accent: #f03228;
+  --color-warning: #e3b505;
+}
+
 body {
-    margin: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.hide-scroll {
+  /* https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

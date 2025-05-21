@@ -14,13 +14,14 @@ const Info: Component = () => {
     <div class="h-full w-full p-8 space-y-12">
       <section id="algemeen" class="space-y-4">
         <TitleComponent children={<p>Algemeen & contact</p>} />
-        <div class="px-4 text-neutral-700 dark:text-neutral-300">
+        <div class="px-4 text-secondary-text dark:text-neutral-300">
           Het ❤️ U Festival is voor (nieuwe) studenten in de regio Utrecht en is
           een aanvulling op UIT.
         </div>
         <TextDropDownComponent
           header="Adres"
           notoggle={true}
+          position={1}
           children={
             <div class="text-left space-y-4">
               Locatie: Strijkviertel, Utrecht Navigatieadres: Strijkviertelweg,
@@ -31,6 +32,7 @@ const Info: Component = () => {
         <TextDropDownComponent
           header="Datum & Openingstijden"
           notoggle={true}
+          position={3}
           children={
             <div class="text-left space-y-4">
               Zaterdag 6 september 2025 - 12:00 tot 23:00 uur
@@ -44,6 +46,7 @@ const Info: Component = () => {
 
         <TextDropDownComponent
           header="Wat ga ik dit noemen?"
+          position={1}
           children={
             <div class="text-left space-y-6">
               <IconTextComponent
@@ -76,6 +79,7 @@ const Info: Component = () => {
 
         <TextDropDownComponent
           header="Openbaar vervoer"
+          position={3}
           children={
             <div class="text-left space-y-6">
               <IconTextComponent
@@ -132,6 +136,7 @@ const Info: Component = () => {
 
         <TextDropDownComponent
           header="Ik gebruik medicatie. Wat nu?"
+          position={1}
           children={
             <div class="text-left space-y-6">
               Het is toegestaan om medicijnen mee te nemen in een dosis die je
@@ -150,6 +155,7 @@ const Info: Component = () => {
         />
         <TextDropDownComponent
           header="Mag ik het festivalterrein tussentijds verlaten?"
+          position={2}
           children={
             <div class="text-left space-y-6">
               Nee, helaas is dat niet mogelijk.
@@ -171,6 +177,7 @@ const Info: Component = () => {
         />
         <TextDropDownComponent
           header="Zijn er lockers?"
+          position={3}
           notoggle={true}
           children="Yes, deze zijn er! Op het terrein kun je medium & grote lockers huren."
         />
@@ -179,7 +186,7 @@ const Info: Component = () => {
       <section id="lockers" class="space-y-4">
         <TitleComponent children={<p>Lockers</p>} />
 
-        <div class="px-4 text-neutral-700 dark:text-neutral-300">
+        <div class="px-4 text-secondary-text dark:text-neutral-300">
           Op het festivalterrein zijn kluisjes aanwezig waar je je spullen
           veilig kunt opbergen!
           <br />
@@ -193,7 +200,7 @@ const Info: Component = () => {
       <section id="golden-glu" class="space-y-4">
         <TitleComponent children={<p>Golden-GLU</p>} />
 
-        <div class="px-4 text-neutral-700 dark:text-neutral-300">
+        <div class="px-4 text-secondary-text dark:text-neutral-300">
           Studenten van het GLU hebben tijdens het festival speciale privileges
           en zijn herkenbaar aan een gouden armbandje.
           <br />

@@ -5,7 +5,7 @@ export type Route = "home" | "map" | "info" | "events";
 
 export type RouteComponent = Component<{}>;
 
-const [activeRoute, setRoute] = createSignal<Route>("info");
+const [activeRoute, setRoute] = createSignal<Route>("events");
 
 interface RouterProps {
   routeMap: Record<

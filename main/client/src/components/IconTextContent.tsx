@@ -1,4 +1,12 @@
-const IconTextComponent = (props: any) => {
+import { Component } from "solid-js";
+
+interface IconTextProps {
+  icon: any;
+  title: string | HTMLElement;
+  desc: string | HTMLElement;
+}
+
+const IconTextComponent: Component<IconTextProps> = (props: any) => {
   return (
     <section class="space-y-2">
       <div class="flex flex-row gap-2 items-center">
