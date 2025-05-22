@@ -27,6 +27,8 @@
 }
 
 body {
+  touch-action: pan-x pan-y;
+
   margin: 0;
   overflow: hidden;
   -webkit-font-smoothing: antialiased;
