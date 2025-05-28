@@ -209,24 +209,6 @@ const Info: Component = () => {
           bars zonder in een rij te hoeven staan.
         </div>
       </section>
-
-      <button
-        class="text-red-500"
-        onClick={() => {
-          document.documentElement.classList.add("dark");
-        }}
-      >
-        Click here for darktheme (temp shit)
-      </button>
-
-      <button
-        class="text-red-500 mb-32"
-        onClick={() => {
-          document.documentElement.classList.remove("dark");
-        }}
-      >
-        Click here for lightttt (temp shit)
-      </button>
     </div>
   );
 };

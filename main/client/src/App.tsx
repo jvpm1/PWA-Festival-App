@@ -1,5 +1,4 @@
-// App.tsx
-import { For, Component, createSignal } from "solid-js";
+import { For, Component, createSignal, createEffect } from "solid-js";
 import RouterComponent, { setRoute, Route } from "./modules/Router";
 
 import Home from "./routes/Home";
@@ -11,6 +10,8 @@ import HomeIcon from "./assets/icons/home.svg";
 import MapIcon from "./assets/icons/map.svg";
 import InfoIcon from "./assets/icons/info.svg";
 import EventIcon from "./assets/icons/event.svg";
+import MoonIcon from "./assets/icons/moon.svg";
+import SunIcon from "./assets/icons/sun.svg";
 
 const routeMap: Record<
   Route,
@@ -44,20 +45,54 @@ const routeMap: Record<
 
 const App: Component = () => {
   const [currentRoute, setCurrentRoute] = createSignal<Route>("home");
+  const [isLightTheme, setTheme] = createSignal(true);
+
+  createEffect(() => {
+    if (isLightTheme()) {
+      document.documentElement.classList.remove("dark");
+    } else {
+      document.documentElement.classList.add("dark");
+    }
+  });
 
   const handleRouteChange = (route: Route) => {
-    // document.body.requestFullscreen(); // TODO: Remove upon public release
+    document.body.requestFullscreen(); // TODO: Remove upon public release
     setRoute(route);
     setCurrentRoute(route);
   };
 
+  const toggleTheme = () => {
+    setTheme(!isLightTheme());
+
+    const themeButtonIcon = document.querySelector(".theme-toggle-icon");
+    if (themeButtonIcon) {
+      themeButtonIcon.classList.add("scale-125");
+      setTimeout(() => {
+        themeButtonIcon.classList.remove("scale-125");
+      }, 300);
+    }
+  };
+
   return (
     <div class="bg-root-bg dark:bg-root-bg-dark flex flex-col w-screen h-screen">
+      <div class="absolute flex justify-end p-2 z-30 w-full">
+        <div
+          class="relative w-10 h-10 p-1.5 bg-primary-container-bg dark:bg-primary-container-bg-dark rounded-full border border-primary-border dark:border-primary-border-dark cursor-pointer flex items-center justify-center"
+          onClick={toggleTheme}
+        >
+          <img
+            src={isLightTheme() ? SunIcon : MoonIcon}
+            alt=""
+            class="h-full w-full theme-toggle-icon transition-transform duration-300 ease-in-out brightness-0 dark:brightness-100"
+          />
+        </div>
+      </div>
+
       <main class="h-full w-full overflow-y-auto">
         <RouterComponent routeMap={routeMap} />
       </main>
 
-      <header class="fixed bottom-0 p-4 w-full z-10">
+      <footer class="fixed bottom-0 p-4 w-full z-10">
         <nav class="w-full h-17 flex justify-between items-center bg-white/80 dark:bg-black/50 backdrop-blur-lg rounded-full border border-neutral-200 dark:border-neutral-900">
           <For each={Object.entries(routeMap)}>
             {([route, { name, icon }]) => {
@@ -99,7 +134,7 @@ const App: Component = () => {
             }}
           </For>
         </nav>
-      </header>
+      </footer>
     </div>
   );
 };

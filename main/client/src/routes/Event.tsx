@@ -66,23 +66,25 @@ const Event: Component = () => {
       .padStart(2, "0")}`;
   };
 
-  const getEventPosition = (event: Event, eventDay) => {
-    // Use eventday here
+  const getEventPosition = (event: Event, eventDay: EventDay) => {
+    // I still hate math :(
+    const startingDate = new Date(eventDay.lowestUnixTime!);
     if (!startingDate) return { left: 0, width: hourSize };
 
     const eventStartDate = event.beginDate;
     const eventEndDate = event.endDate;
 
-    // I hate math - Jos
     const unixDiff = eventStartDate.getTime() - startingDate.getTime();
     const hoursDiff = unixDiff / (1000 * 60 * 60);
+    const leftPosition = hoursDiff * hourSize;
 
     const eventUnixDuration = eventEndDate.getTime() - eventStartDate.getTime();
     const hoursDuration = eventUnixDuration / (1000 * 60 * 60);
+    const eventWidth = hoursDuration * hourSize;
 
     return {
-      left: hoursDiff * hourSize,
-      width: hoursDuration * hourSize,
+      left: leftPosition,
+      width: eventWidth,
     };
   };
 
@@ -139,7 +141,7 @@ const Event: Component = () => {
       </nav>
 
       <div class="w-full h-full flex flex-col px-4">
-        <section class="w-full h-full overflow-auto hide-scroll rounded-4xl">
+        <section class="w-full h-full overflow-auto hide-scroll rounded-4xl transition-all border border-primary-border dark:border-primary-border-dark">
           <div class="flex flex-col min-w-fit">
             <section class="flex">
               <div class="w-32 h-fill bg-accent text-white flex items-center justify-center">
@@ -158,40 +160,45 @@ const Event: Component = () => {
             </section>
 
             <section class="flex flex-col">
-              <div
-                class="relative border-b border-primary-border dark:border-primary-border-dark h-24 flex"
-                style={`width: ${32 * 4 + getTimeline().length * hourSize}px`}
-              >
-                <For each={getEvents().events[location]}>
-                  {(event) => {
-                    <div class="w-32 h-full flex justify-between items-center p-4 text-primary-text dark:text-primary-text-dark">
+              <For each={Object.keys(getEvents().events)}>
+                {(location) => (
+                  <div
+                    class="relative border-b border-primary-border dark:border-primary-border-dark h-24 flex items-center"
+                    style={`width: ${
+                      32 * 4 + getTimeline().length * hourSize
+                    }px`}
+                  >
+                    <div class="w-32 h-full flex justify-between bg-primary-container-bg dark:bg-primary-container-bg-dark items-center p-4 text-primary-text dark:text-primary-text-dark border-r border-primary-border dark:border-primary-border-dark">
                       <p class="text-md font-medium">{location}</p>
-                    </div>;
-                    {
-                      /* <div class="relative flex-1">
-                      
-                          const position = getEventPosition(event);
+                    </div>
+                    <div class="relative flex-1 h-full">
+                      <For each={getEvents().events[location]}>
+                        {(event) => {
+                          const eventDay = formatedEvents[
+                            currentDay()
+                          ] as EventDay;
+                          const position = getEventPosition(event, eventDay);
+
                           return (
                             <div
-                              class="absolute top-2 bottom-2 bg-primary-container-bg dark:bg-primary-container-bg-dark rounded-2xl p-4 flex flex-col justify-center border border-primary-border dark:border-primary-border-dark"
-                              style={`left: ${position.left}px; width: ${position.width}px`}
+                              class="absolute top-2 bottom-2 bg-primary-container-bg dark:bg-primary-container-bg-dark rounded-xl p-3 flex flex-col justify-center border border-primary-border dark:border-primary-border-dark"
+                              style={`left: ${position.left}px; width: ${position.width}px;`}
                             >
-                              <p class="text-primary-text dark:text-primary-text-dark text-sm font-medium truncate">
+                              <p class="text-primary-text dark:text-primary-text-dark text-sm font-semibold truncate">
                                 {event.title}
                               </p>
-
                               <p class="text-secondary-text dark:text-secondary-text-dark text-xs truncate">
                                 {formatTime(event.beginDate)} -{" "}
                                 {formatTime(event.endDate)}
                               </p>
                             </div>
                           );
-                       
-                    </div> */
-                    }
-                  }}
-                </For>
-              </div>
+                        }}
+                      </For>
+                    </div>
+                  </div>
+                )}
+              </For>
             </section>
           </div>
         </section>

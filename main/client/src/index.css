@@ -4,11 +4,11 @@
 
 @theme {
   --color-root-bg: rgb(255, 255, 255);
-  --color-root-bg-dark: #000;
+  --color-root-bg-dark: oklch(17% 0 0);
 
   /* Background */
   --color-primary-container-bg: oklch(98% 0 0);
-  --color-primary-container-bg-dark: #000;
+  --color-primary-container-bg-dark: oklch(18% 0 0);
 
   /* Text */
   --color-primary-text: oklch(28% 0 0);

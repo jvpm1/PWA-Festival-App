@@ -10,7 +10,7 @@ const Home: Component = () => {
         id="images-slider"
         class="relative flex flex-row gap-4 hide-scroll overflow-x-scroll rounded-3xl"
       >
-        <For each={[0, 0, 0, 0]}>
+        <For each={[0, 0, 0, 0, 0, 0]}>
           {(a, b) => (
             <div>
               <div class="w-64">
