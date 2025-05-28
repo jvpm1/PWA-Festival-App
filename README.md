@@ -3,12 +3,18 @@
 </div>
 
 # U Fest app (PVT)
-PWA app voor de U festival
 
-----
+PWA app for Love U Festival
 
-## Bestanden
-- [De vraagen](./markdowns/de-vragen.md)
+# Table of Contents
+
+- [Files](#Files)
+
+---
+
+## Files
+
+- [Questions](./markdowns/de-vragen.md)
 - [PWA map](./src)
-    - [Server (Deno)](./src/server)
-    - [Client (SolidJS)](./src/client)
+  - [Server (Deno)](./main/server)
+  - [Client (SolidJS)](./main/client)

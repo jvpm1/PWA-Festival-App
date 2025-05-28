@@ -56,7 +56,7 @@ const App: Component = () => {
   });
 
   const handleRouteChange = (route: Route) => {
-    document.body.requestFullscreen(); // TODO: Remove upon public release
+    // document.body.requestFullscreen(); // TODO: Remove upon public release
     setRoute(route);
     setCurrentRoute(route);
   };
