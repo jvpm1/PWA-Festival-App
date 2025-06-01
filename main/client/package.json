@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@fontsource-variable/roboto": "^5.2.5",
+    "@solid-primitives/i18n": "^2.2.1",
     "@tailwindcss/vite": "^4.1.6",
+    "leaflet": "^1.9.4",
     "solid-js": "^1.9.4",
     "solid-transition-group": "^0.3.0",
     "tailwindcss": "^4.1.6"

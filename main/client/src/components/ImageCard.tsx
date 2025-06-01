@@ -3,7 +3,7 @@ import { Component } from "solid-js";
 interface ImageCardProps {
   image: string | HTMLElement;
   title: string | HTMLElement;
-  desc: string | HTMLElement;
+  desc: string | HTMLElement | null;
   onclick: any;
 }
 

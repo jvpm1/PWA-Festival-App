@@ -57,7 +57,7 @@ const RouterComponent: Component<RouterProps> = (props) => {
 
   return (
     <div
-      class={`transition-all duration-200 ease-initial transform
+      class={`transition-all duration-200 ease-initial transform h-full
       ${
         isTransitioning()
           ? "opacity-0 translate-y-1"

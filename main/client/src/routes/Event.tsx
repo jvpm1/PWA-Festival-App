@@ -110,7 +110,7 @@ const Event: Component = () => {
   const getDays = createMemo(() => {
     return Object.keys(formatedEvents)
       .map((day) => parseInt(day))
-      .sort((a, b) => a - b);
+      .sort((a, b) => b - a);
   });
 
   const getEvents = createMemo(() => {
@@ -140,8 +140,8 @@ const Event: Component = () => {
         </div>
       </nav>
 
-      <div class="w-full h-full flex flex-col px-4">
-        <section class="w-full h-full overflow-auto hide-scroll rounded-4xl transition-all border border-primary-border dark:border-primary-border-dark">
+      <div class="w-full h-full flex flex-col">
+        <section class="w-full h-full overflow-auto hide-scroll rounded-t-4xl transition-all">
           <div class="flex flex-col min-w-fit">
             <section class="flex">
               <div class="w-32 h-fill bg-accent text-white flex items-center justify-center">
