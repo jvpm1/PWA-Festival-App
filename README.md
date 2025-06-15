@@ -288,7 +288,7 @@ Each event contains:
 
 <div align="left">
 
-For detailed questions and answers about the project, see [Questions](./markdowns/de-vragen.md)
+For detailed questions and answers about the project, see [Questions](./markdowns/questions.md)
 
 </div>
 
