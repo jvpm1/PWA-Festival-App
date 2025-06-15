@@ -209,6 +209,7 @@ const Info: Component = () => {
           bars zonder in een rij te hoeven staan.
         </div>
       </section>
+      <div class="h-32"></div>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { Component } from "solid-js";
 interface IconTextProps {
   icon: any;
   title: string | HTMLElement;
-  desc: string | HTMLElement;
+  desc: any;
 }
 
 const IconTextComponent: Component<IconTextProps> = (props: any) => {

@@ -2,19 +2,18 @@ import { Component, For, createSignal } from "solid-js";
 import ImageCard from "../components/ImageCard";
 import TitleComponent from "../components/Title";
 import NewsModal from "../components/NewsWindow";
-import { Events } from "../assets/db/Events";
-import { NewsArticle, Category, newsArticles } from "../assets/db/News";
+import { EventData, EventType, Category } from "../assets/db/Database"; // Updated import
 import defaultActorImage from "../assets/imgs/events/actor1.webp";
 
 const Home: Component = () => {
   const [selectedCategory, setSelectedCategory] = createSignal<
     Category | "all"
   >("all");
-  const [selectedArticle, setSelectedArticle] =
-    createSignal<NewsArticle | null>(null);
+  const [selectedArticle, setSelectedArticle] = createSignal<any | null>(null); // Updated type
   const [isModalOpen, setIsModalOpen] = createSignal(false);
 
-  const openModal = (article: NewsArticle) => {
+  const openModal = (article: any) => {
+    // Updated type
     setSelectedArticle(article);
     setIsModalOpen(true);
   };
@@ -24,16 +23,22 @@ const Home: Component = () => {
     setSelectedArticle(null);
   };
 
-  const eventsWithDesc = Events.filter((event) => event.desc !== null).slice(
-    0,
-    10
-  );
+  // Extract all events from all EventType objects
+  const getAllEvents = () => {
+    return EventData.flatMap((eventType: EventType) =>
+      eventType.events.filter((event) => event.desc !== null)
+    ).slice(0, 10);
+  };
+
+  // Extract all news articles from all EventType objects
+  const getAllNews = () => {
+    return EventData.flatMap((eventType: EventType) => eventType.news);
+  };
 
   const filteredNews = () => {
-    if (selectedCategory() === "all") return newsArticles;
-    return newsArticles.filter(
-      (article) => article.category === selectedCategory()
-    );
+    const allNews = getAllNews();
+    if (selectedCategory() === "all") return allNews;
+    return allNews.filter((article) => article.category === selectedCategory());
   };
 
   const categoryLabels = {
@@ -48,8 +53,9 @@ const Home: Component = () => {
 
   // Get only categories that have articles
   const availableCategories = () => {
+    const allNews = getAllNews();
     const categoriesWithArticles = new Set(
-      newsArticles.map((article) => article.category)
+      allNews.map((article) => article.category)
     );
     return Object.values(Category).filter((category) =>
       categoriesWithArticles.has(category)
@@ -63,7 +69,7 @@ const Home: Component = () => {
         id="images-slider"
         class="relative flex flex-row gap-4 hide-scroll overflow-x-scroll rounded-3xl"
       >
-        <For each={eventsWithDesc}>
+        <For each={getAllEvents()}>
           {(event) => (
             <div>
               <div class="w-64">
@@ -168,6 +174,8 @@ const Home: Component = () => {
         isOpen={isModalOpen()}
         onClose={closeModal}
       />
+
+      <div class="h-32"></div>
     </div>
   );
 };

@@ -9,6 +9,41 @@ export interface Event {
   endDate: Date;
 }
 
+export const Category = {
+  LINEUP: "lineup",
+  FESTIVAL_INFO: "festival-info",
+  ARTIST_SPOTLIGHT: "artist-spotlight",
+  GENERAL: "general",
+  ANNOUNCEMENT: "announcement",
+  SAFETY: "safety",
+  SUSTAINABILITY: "sustainability",
+};
+
+export interface EventType {
+  title: string;
+  description: null | string;
+  mapPosition: [number, number];
+  events: {
+    title: string;
+    location: string;
+    desc: null | string;
+    img?: any;
+    beginDate: Date;
+    endDate: Date;
+  }[];
+  news: {
+    id: number;
+    title: string;
+    summary: string;
+    content: string;
+    author: string;
+    publishDate: Date;
+    category: any;
+    img?: string;
+    tags: string[];
+  }[];
+}
+
 export const GetDay = (day: number) => {
   switch (day) {
     case 1:

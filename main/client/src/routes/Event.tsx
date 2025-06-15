@@ -1,11 +1,21 @@
 import { Component, For, createSignal, createMemo } from "solid-js";
 import TitleComponent from "../components/Title";
-import { Events, GetDay, type Event } from "../assets/db/Events";
+import { EventData, EventType, GetDay } from "../assets/db/Database";
 
 interface EventDay {
   lowestUnixTime: null | number;
   highestUnixTime: null | number;
   events: any;
+}
+
+// Define the event interface based on the new structure
+interface Event {
+  title: string;
+  location: string;
+  desc: null | string;
+  img?: any;
+  beginDate: Date;
+  endDate: Date;
 }
 
 const hourSize = 200;
@@ -15,9 +25,19 @@ let formatedEvents: Record<string, EventDay> = {};
 const Event: Component = () => {
   const [currentDay, setDay] = createSignal<number>(0);
 
+  // Extract all events from all EventType objects
+  const getAllEvents = (): Event[] => {
+    return EventData.flatMap((eventType: EventType) => eventType.events);
+  };
+
   const initDates = () => {
+    // Reset formatted events
+    formatedEvents = {};
+
     // Gets the lowest and highest unix out of Events, and also organizes them by day
-    Events.forEach((event: Event) => {
+    const allEvents = getAllEvents();
+
+    allEvents.forEach((event: Event) => {
       const unixBeginTime = event.beginDate.getTime();
       const unixEndTime = event.endDate.getTime();
 
@@ -160,7 +180,7 @@ const Event: Component = () => {
             </section>
 
             <section class="flex flex-col">
-              <For each={Object.keys(getEvents().events)}>
+              <For each={Object.keys(getEvents().events || {})}>
                 {(location) => (
                   <div
                     class="relative border-b border-primary-border dark:border-primary-border-dark h-24 flex items-center"
@@ -172,7 +192,7 @@ const Event: Component = () => {
                       <p class="text-md font-medium">{location}</p>
                     </div>
                     <div class="relative flex-1 h-full">
-                      <For each={getEvents().events[location]}>
+                      <For each={getEvents().events?.[location] || []}>
                         {(event) => {
                           const eventDay = formatedEvents[
                             currentDay()

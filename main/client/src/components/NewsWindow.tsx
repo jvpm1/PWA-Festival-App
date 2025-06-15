@@ -1,6 +1,19 @@
 import { Component, Show } from "solid-js";
 import { Portal } from "solid-js/web";
-import { NewsArticle, Category } from "../assets/db/News";
+import { Category } from "../assets/db/Database"; // Updated import
+
+// Define the news article interface based on the new structure
+interface NewsArticle {
+  id: number;
+  title: string;
+  summary: string;
+  content: string;
+  author: string;
+  publishDate: Date;
+  category: Category;
+  img?: any;
+  tags: string[];
+}
 
 interface NewsModalProps {
   article: NewsArticle | null;

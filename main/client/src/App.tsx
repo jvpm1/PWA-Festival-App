@@ -115,8 +115,8 @@ const App: Component = () => {
                         "brightness-100": isActive(),
                         "brightness-0 dark:brightness-100": !isActive(),
                       }}
-                      src={icon}
-                      alt={`${name}'s icon`}
+                      src={icon || undefined}
+                      alt={name}
                     />
                   </div>
 
