@@ -82,7 +82,7 @@
 
 <div align="left">
 
-- Find the PWA on our [website]([https://example.com](https://u230061.gluwebsite.nl/ufest/))
+- Find the PWA on our [website](https://u230061.gluwebsite.nl/ufest/)
 - Download the latest build at the [releases](https://github.com/jvpm1/PWA-Festival-App/releases) tab with [SolidJS](https://www.solidjs.com/)
 
 </div>
